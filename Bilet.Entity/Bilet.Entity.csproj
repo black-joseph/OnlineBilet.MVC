@@ -75,7 +75,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entity\Yolcu.cs" />
+    <Compile Include="Entity\BiletSatis.cs" />
+    <Compile Include="Entity\BiletSatisDetay.cs" />
+    <Compile Include="Entity\EntityBase.cs" />
+    <Compile Include="Entity\Otobus.cs" />
+    <Compile Include="Entity\Sefer.cs" />
+    <Compile Include="Entity\SeferProgram.cs" />
     <Compile Include="Identity\ApplicationRole.cs" />
     <Compile Include="Identity\ApplicationUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
