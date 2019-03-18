@@ -17,5 +17,11 @@ namespace Bilet.PL.Controllers
             
             return View();
         }
+        [HttpPost]
+        public ActionResult Index(string seferId)
+        {
+
+            return View();
+        }
     }
 }

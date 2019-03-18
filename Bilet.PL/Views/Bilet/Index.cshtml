@@ -38,11 +38,13 @@
                             <div class="from">
                                 <h3>Nereden</h3>
                                 @*<input type="text" name="city" class="city1" placeholder="Type Departure City" required="">*@
-                                @Html.DropDownList("CategoryId", new SelectList(ViewBag.Seferler, "Id", "Name"), new { @class = "form-control" })
+                                @*@Html.DropDownListFor(m => m,new SelectList(ViewBag.Seferler,"KalkisYeri","KalkisYeri"), "Kalkış Yeri Seçiniz")*@
+                                @Html.DropDownList("SeferId", new SelectList(ViewBag.Seferler, "Id", "KalkisYeri"), new { @class = "form-control" })
                             </div>
+                            
                             <div class="to">
                                 <h3>Nereye</h3>
-                                <input type="text" name="city" class="city2" placeholder="Type Destination City" required="">
+                                @*@Html.DropDownListFor(m=>m.Destinasyon.Where(m.Id==))*@
                             </div>
                             <div class="clear"></div>
                             <div class="date">
