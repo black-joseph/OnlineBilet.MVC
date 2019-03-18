@@ -3,7 +3,8 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+
+<section class="banner_w3lspvt" id="home">
     <div class="csslider infinity" id="slider1">
         <input type="radio" name="slides" checked="checked" id="slides_1" />
         <input type="radio" name="slides" id="slides_2" />
@@ -15,7 +16,7 @@
                     <div class="overlay">
                         <div class="container">
                             <div class="w3layouts-banner-info">
-                                <h3 class="text-wh">Never let your memories be greater than your dreams.</h3>
+                                <h3 class="text-wh">Never let your memories be greater than your dreams</h3>
                                 <h4 class="text-wh">tristique senectus et netus et malesuada</h4>
                                 <div class="buttons mt-4">
                                     <a href="about.html" class="btn mr-2">About Us</a>
@@ -65,9 +66,18 @@
                             <div class="w3layouts-banner-info">
                                 <h3 class="text-wh">It is better to travel than to arrive. Let's Be Adventurers.</h3>
                                 <h4 class="text-wh">tristique senectus et netus et malesuada</h4>
-                                <div class="buttons mt-4">
-                                    <a href="about.html" class="btn mr-2">About Us</a>
-                                    <a href="booking.html" class="btn">Book a Tour</a>
+                                <div class="nav">
+                                    <ul class="nav navbar-nav bg-light">
+                                        <li class="navbar-item">
+                                            @Html.ActionLink("Hakkımızda", "About", "Home")
+                                        </li>
+                                        <li class="navbar-item">
+                                            @Html.ActionLink("Bilet Al", "Index", "Bilet")
+                                        </li>
+
+                                    </ul>
+
+                                
                                 </div>
                             </div>
                         </div>
@@ -82,3 +92,4 @@
             <label for="slides_4"></label>
         </div>
     </div>
+</section>

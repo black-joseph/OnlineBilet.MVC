@@ -1,4 +1,6 @@
-﻿using Bilet.DAL.Context;
+﻿using Bilet.BLL.Repository;
+using Bilet.DAL.Context;
+using Bilet.Entity.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +15,8 @@ namespace Bilet.PL.Controllers
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            //Repository<Category> repoC = new Repository<Category>(ent);
-            //ViewBag.Kategoriler = repoC.GetAll();
+            Repository<Sefer> repoS = new Repository<Sefer>(ent);
+            ViewBag.Seferler = repoS.GetAll();
 
             //Repository<Tag> repoT = new Repository<Tag>(ent);
             //ViewBag.Etiketler = repoT.GetAll(null, t => t.OrderByDescending(x => x.Articles.Count)).Take(5);

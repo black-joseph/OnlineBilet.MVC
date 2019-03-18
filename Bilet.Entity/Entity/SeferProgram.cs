@@ -11,9 +11,10 @@ namespace Bilet.Entity.Entity
     [Table("SeferProgramlar")]
     public class SeferProgram : EntityBase
     {
+        [Required]        
+        public DateTime KalkisSaati { get; set; }
         [Required]
-        public DateTime KalkisTarihVeSaat { get; set; }
-        public DateTime VarisTarihVeSaat { get; set; }
+        public DateTime VarisSaati { get; set; }
         public int SeferId { get; set; }
         public int BiletSatisId { get; set; }
         //relations

@@ -15,6 +15,7 @@ namespace Bilet.Entity.Entity
         public string KalkisYeri { get; set; }
         [Required]
         public string Destinasyon { get; set; }
+        public DateTime GidisTarihi { get; set; }
         //relations
         public virtual List<SeferProgram> SeferProgramlar { get; set; }
 

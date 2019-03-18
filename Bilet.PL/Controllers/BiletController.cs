@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Bilet.BLL.Repository;
+using Bilet.Entity.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +10,11 @@ namespace Bilet.PL.Controllers
 {
     public class BiletController : BaseController
     {
+        
         // GET: Bilet
         public ActionResult Index()
         {
+            
             return View();
         }
     }
