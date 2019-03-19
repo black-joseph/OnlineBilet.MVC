@@ -22,5 +22,7 @@ namespace Bilet.DAL.Context
         public virtual DbSet<Otobus> Otobusler { get; set; }
         public virtual DbSet<Sefer> Seferler { get; set; }
         public virtual DbSet<SeferProgram> SeferProgramlar { get; set; }
+        public virtual DbSet<KalkisYeri> KalkisYerleri { get; set; }
+        public virtual DbSet<Destinasyon> Destinasyonlar { get; set; }
     }
 }

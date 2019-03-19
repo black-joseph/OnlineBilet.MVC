@@ -10,8 +10,7 @@ namespace Bilet.Entity.Entity
     public abstract class EntityBase
     {
         [Key]
-        public int Id { get; set; }        
-
+        public int Id { get; set; }      
         public bool Silindi { get; set; } = false;
     }
 }

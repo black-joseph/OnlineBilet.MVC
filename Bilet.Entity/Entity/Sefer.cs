@@ -11,13 +11,14 @@ namespace Bilet.Entity.Entity
     [Table("Seferler")]
     public class Sefer : EntityBase
     {
-        [Required]
-        public string KalkisYeri { get; set; }
-        [Required]
-        public string Destinasyon { get; set; }
-        public DateTime GidisTarihi { get; set; }
+        public int KalkisYeriId { get; set; }
+        public int DestinasyonId { get; set; }
         //relations
         public virtual List<SeferProgram> SeferProgramlar { get; set; }
+        [ForeignKey("KalkisYeriId")]
+        public virtual KalkisYeri KalkisYeri { get; set; }
+        [ForeignKey("DestinasyonId")]
+        public virtual Destinasyon Destinasyon { get; set; }
 
     }
 }
