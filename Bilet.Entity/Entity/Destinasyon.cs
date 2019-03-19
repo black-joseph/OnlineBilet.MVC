@@ -12,7 +12,7 @@ namespace Bilet.Entity.Entity
     public class Destinasyon:EntityBase
     {
         [Required]
-        public string VarisYer { get; set; }
+        public string DestinasyonYer { get; set; }
         //Relations
         public virtual List<Sefer> Seferler { get; set; }
     }

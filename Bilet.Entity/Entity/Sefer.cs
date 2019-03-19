@@ -11,8 +11,8 @@ namespace Bilet.Entity.Entity
     [Table("Seferler")]
     public class Sefer : EntityBase
     {
-        public int KalkisYeriId { get; set; }
-        public int DestinasyonId { get; set; }
+        public int? KalkisYeriId { get; set; }
+        public int? DestinasyonId { get; set; }
         //relations
         public virtual List<SeferProgram> SeferProgramlar { get; set; }
         [ForeignKey("KalkisYeriId")]

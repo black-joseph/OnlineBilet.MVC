@@ -15,9 +15,15 @@ namespace Bilet.PL.Controllers
         // GET: Bilet
         public ActionResult Index()
         {
-            List<Sefer> SList = ent.Seferler.ToList();
-            ViewBag.kYerList = new SelectList(SList, "KalkisYeriId", "KalkisYer");
+            List<KalkisYeri> KalkList = ent.KalkisYerleri.ToList();
+            ViewBag.KalkList = new SelectList(KalkList, "Id", "KalkisYer");
             return View();
+        }
+        public JsonResult DestinasyonGetir(int KalkisYerId)
+        {
+            ent.Configuration.ProxyCreationEnabled = false;
+            List<Sefer> destList = ent.Seferler.Where(x => x.Id == KalkisYerId).ToList();
+            return Json(destList, JsonRequestBehavior.AllowGet);
         }
         //public JsonResult DestinasyonlarByKalkisYerleri()
         //{
