@@ -13,6 +13,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Flight Ticket Booking  Widget Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"
+            integrity="sha256-iBcUE/x23aI6syuqF7EeT/+JFBxjPs5zeFJEXxumwb0="
+            crossorigin="anonymous"></script>
 </head>
 <!-- banner -->
 <section class="banner_inner" id="home">
@@ -36,41 +40,29 @@
                         <form action="#" method="post">
                             <div class="from">
                                 <h3>Nereden</h3>
-                                @if (ViewBag.SeferList != null)
-                                {
-                                    @Html.DropDownListFor(m => m.KalkisYeriId, ViewBag.KalkList as SelectList, "--Kalkış Yeri Seçiniz--", new { @class = "form-control" })
-                                }
 
+                                <select id="cbKalkisYerleri">
+                                    <option value="-1">Kalkış yeri Seçiniz.</option>
+                                    @foreach (var ky in ViewBag.KalkisYerler)
+                                    {
+                                        <option value="@ky.Id">@ky.KalkisYer</option>
+                                    }
+                                </select>
                             </div>
                             <div class="to">
                                 <h3>Nereye</h3>
-                                @Html.DropDownListFor(m => m.DestinasyonId, new SelectList(" "), "--Destinasyon Seçiniz--", new { @class = "form-control" })
+                                <select id="cbDestinasyonlar"></select>
+
                             </div>
-
-                            <script src="https://code.jquery.com/jquery-1.10.2.min.js"
-                                    integrity="sha256-C6CB9UYIS9UJeqinPHWTHVqh/E1uhG5Twh+Y5qFQmYg="
-                                    crossorigin="anonymous"></script>
-                            <script>
-                                $(document).ready(function () {
-                                    $("#KalkisYeriId").change(function () {
-                                        $.get("/Home/DestinasyonGetir", { KalkisYeriId: $("#KalkisYeriId").val() }, function (data) {
-                                            $("#DestinasyonId").empty();
-                                            $.each(data, function (index, row) {
-                                                $("#DestinasyonId").append("<option value='" + row.DestinasyoId + "'>" + row.DestinasyoId + "</option>")
-
-                                            });
-                                        });
-                                    })
-                                });
-                            </script>
                             <div class="clear"></div>
                             <div class="date">
                                 <div class="depart">
-                                    <h3>Depart</h3>
-                                    <input class="date" id="datepicker2" name="Text" type="text" value="mm/dd/yyyy" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}" required="">
-                                    <span class="checkbox1">
-                                        <label class="checkbox"><input type="checkbox" name="" checked=""><i> </i>Flexible with date</label>
-                                    </span>
+                                    @*<h3>Depart</h3>
+                                        <input class="date" id="datepicker2" name="Text" type="text" value="mm/dd/yyyy" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}" required="">
+                                        <span class="checkbox1">
+                                            <label class="checkbox"><input type="checkbox" name="" checked=""><i> </i>Flexible with date</label>
+                                        </span>*@
+                                    <select id="cbKalkisTarihleri"></select>
                                 </div>
                             </div>
                             <div class="class">
@@ -122,6 +114,57 @@
         <p class="agileinfo"> &copy; 2016 Flight Ticket Booking . All Rights Reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
     </div>
     <!--script for portfolio-->
+    <!--kalkış yerine göre destinasyon seçimi-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#cbKalkisYerleri").on('change', function () {
+                console.log("change");
+                var KalkisYeriId = $('#cbKalkisYerleri option:selected').val();
+                console.log(KalkisYeriId);
+                $.ajax({
+                    type: 'GET',
+                    data: { KalkisYerId: KalkisYeriId },
+                    url: "/Bilet/DestinasyonGetir",
+                    success: function (result) {
+                        //var destinasyonlar = JSON.parse(result);
+                        var s = '<option value="-1">Destinasyon Seçiniz.</option>';
+                        for (var i = 0; i < result.length; i++) {
+                            s += '<option value="' + result[i].Id + '">' + result[i].Destinasyon + '</option>'
+                        }
+                        $('#cbDestinasyonlar').html(s);
+                    }
+
+                });
+            });
+        });
+    </script>
+    <!--kalkış yerine göre destinasyon seçimi-->
+    <!--sefere göre tarih seçimi-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#cbDestinasyonlar").on('change', function () {
+                console.log("change");
+                var SeferId = $('#cbKalkisYerleri option:selected').val();
+                console.log(KalkisYeriId);
+                $.ajax({
+                    type: 'GET',
+                    data: { SeferId: SeferId },
+                    url: "/Bilet/DestinasyonGetir",
+                    success: function (result) {
+                        //var destinasyonlar = JSON.parse(result);
+                        var s = '<option value="-1">Destinasyon Seçiniz.</option>';
+                        for (var i = 0; i < result.length; i++) {
+                            s += '<option value="' + result[i].Id + '">' + result[i].Destinasyon + '</option>'
+                        }
+                        $('#cbDestinasyonlar').html(s);
+                    }
+
+                });
+            });
+        });
+    </script>
+    <!--sefere göre tarih seçimi-->
+
     <script src="js/jquery.min.js"></script>
     <script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
     <script type="text/javascript">
@@ -173,7 +216,8 @@
         });
     </script>
     <!-- //load-more -->
-    
+
+
 
 
 

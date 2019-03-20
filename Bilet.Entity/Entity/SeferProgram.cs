@@ -12,10 +12,11 @@ namespace Bilet.Entity.Entity
     public class SeferProgram : EntityBase
     {
         [Required]        
-        public DateTime KalkisTarihi { get; set; }       
-        public DateTime VarisTarihi { get; set; }
+        public DateTime KalkisTarihi { get; set; }
+        [Required]
+        public string KalkisSaati { get; set; }
         public int SeferId { get; set; }
-        public int BiletSatisId { get; set; }
+        public int? BiletSatisId { get; set; }
         //relations
         [ForeignKey("BiletSatisId")]
         public virtual BiletSatis BiletSatis { get; set; }
