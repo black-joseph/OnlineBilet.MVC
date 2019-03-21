@@ -19,6 +19,8 @@ namespace Bilet.PL.Controllers
             ViewBag.Seferler = repoS.GetAll();
             Repository<KalkisYeri> repoK = new Repository<KalkisYeri>(ent);
             ViewBag.KalkisYerler = repoK.GetAll();
+            Repository<Destinasyon> repoD = new Repository<Destinasyon>(ent);
+            ViewBag.Destinasyonlar = repoD.GetAll();
 
             //Repository<Tag> repoT = new Repository<Tag>(ent);
             //ViewBag.Etiketler = repoT.GetAll(null, t => t.OrderByDescending(x => x.Articles.Count)).Take(5);

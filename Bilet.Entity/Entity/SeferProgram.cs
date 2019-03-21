@@ -12,7 +12,7 @@ namespace Bilet.Entity.Entity
     public class SeferProgram : EntityBase
     {
         [Required]        
-        public DateTime KalkisTarihi { get; set; }
+        public string KalkisTarihi { get; set; }
         [Required]
         public string KalkisSaati { get; set; }
         public int SeferId { get; set; }

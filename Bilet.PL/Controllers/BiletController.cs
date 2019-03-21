@@ -28,12 +28,12 @@ namespace Bilet.PL.Controllers
             }).ToList(), JsonRequestBehavior.AllowGet);
         }
         [HttpGet]
-        public JsonResult TarihGetir(int SeferId)
+        public JsonResult TarihGetir(int KalkisYerId , int DestinasyonId)
         {
-            return Json(ent.Seferler.Where(s => s.KalkisYeriId == KalkisYerId).Select(s => new
+            return Json(ent.SeferProgramlar.Where(t => t.Sefer.KalkisYeriId == KalkisYerId && t.Sefer.DestinasyonId==DestinasyonId).Select(t => new
             {
-                Id = s.DestinasyonId,
-                Destinasyon = s.Destinasyon.DestinasyonYer
+                SeferProgramId = t.Id,
+                KalkisTarihi = t.KalkisTarihi
             }).ToList(), JsonRequestBehavior.AllowGet);
         }
     }
