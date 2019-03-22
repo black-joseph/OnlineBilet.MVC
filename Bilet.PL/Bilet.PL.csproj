@@ -252,6 +252,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutBilet.cshtml" />
     <Content Include="Views\Bilet\Index.cshtml" />
+    <Content Include="Views\Bilet\KoltukSec.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

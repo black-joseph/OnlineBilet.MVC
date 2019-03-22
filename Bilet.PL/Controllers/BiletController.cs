@@ -36,5 +36,19 @@ namespace Bilet.PL.Controllers
                 KalkisTarihi = t.KalkisTarihi
             }).ToList(), JsonRequestBehavior.AllowGet);
         }
+        [HttpGet]
+        public JsonResult SaatGetir(int KalkisYerId, int DestinasyonId , int SeferId)
+        {
+            return Json(ent.SeferSaatler.Where(s => s.Sefer.Guzergah.KalkisYeriId == KalkisYerId && s.Sefer.Guzergah.DestinasyonId == DestinasyonId && s.SeferId==SeferId).Select(s => new
+            {
+                SeferSaatId = s.Id,
+                KalkisSaati = s.KalkisSaati
+            }).ToList(), JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult KoltukSec()
+        {
+
+            return View();
+        }
     }
 }

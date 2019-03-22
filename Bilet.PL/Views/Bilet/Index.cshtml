@@ -57,19 +57,23 @@
                             <div class="clear"></div>
                             <div class="date">
                                 <div class="depart">
-                                    <h3>Ne Zaman</h3>
-                                        @*<input class="date" id="datepicker2" name="Text" type="text" value="mm/dd/yyyy" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}" required="">
-                                        <span class="checkbox1">
-                                            <label class="checkbox"><input type="checkbox" name="" checked=""><i> </i>Flexible with date</label>
-                                        </span>*@
+                                    <h3>Ne Zaman?</h3>
+                                    @*<input class="date" id="datepicker2" name="Text" type="text" value="mm/dd/yyyy" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}" required="">
+                <span class="checkbox1">
+                    <label class="checkbox"><input type="checkbox" name="" checked=""><i> </i>Flexible with date</label>
+                </span>*@
                                     <select id="cbKalkisTarihleri"></select>
                                 </div>
+                                <div class="clear"></div>
                             </div>
-                            
+
+
+                            <div class="class">
+                                <h3>Saat Kaçta?</h3>
+                                <select id="cbKalkisSaatleri"></select>
+                            </div>
                             <div class="clear"></div>
-                            
-                            <div class="clear"></div>
-                            <input type="submit" value="Sefer Saatlerine Bak">
+                            @Html.ActionLink("Koltuk Seç", "KoltukSec", "Bilet")
                         </form>
 
                     </div>
@@ -118,7 +122,7 @@
                 console.log(KalkisYeriId);
                 $.ajax({
                     type: 'GET',
-                    data: { KalkisYerId: KalkisYeriId, DestinasyonId: DestinasyonId},
+                    data: { KalkisYerId: KalkisYeriId, DestinasyonId: DestinasyonId },
                     url: "/Bilet/TarihGetir",
                     success: function (result) {
                         //var destinasyonlar = JSON.parse(result);
@@ -134,7 +138,33 @@
         });
     </script>
     <!--sefere göre tarih seçimi-->
+    <!--tarihe göre saat seçimi-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#cbKalkisTarihleri").on('change', function () {
+                console.log("change");
+                var KalkisYeriId = $('#cbKalkisYerleri option:selected').val();
+                var DestinasyonId = $('#cbDestinasyonlar option:selected').val();
+                var SeferId = $('#cbKalkisTarihleri option:selected').val();
+                console.log(KalkisYeriId);
+                $.ajax({
+                    type: 'GET',
+                    data: { KalkisYerId: KalkisYeriId, DestinasyonId: DestinasyonId, SeferId: SeferId },
+                    url: "/Bilet/SaatGetir",
+                    success: function (result) {
+                        //var destinasyonlar = JSON.parse(result);
+                        var s = '<option value="-1">Kalkış Saati Seçiniz.</option>';
+                        for (var i = 0; i < result.length; i++) {
+                            s += '<option value="' + result[i].SeferSaatId + '">' + result[i].KalkisSaati + '</option>'
+                        }
+                        $('#cbKalkisSaatleri').html(s);
+                    }
 
+                });
+            });
+        });
+    </script>
+    <!--tarihe göre saat seçimi-->
     <script src="js/jquery.min.js"></script>
     <script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
     <script type="text/javascript">
@@ -157,10 +187,8 @@
     </script>
     <!-- //Calendar -->
     <!--quantity-->
-    
     <!--//quantity-->
     <!--load more-->
-   
     <!-- //load-more -->
 
 
