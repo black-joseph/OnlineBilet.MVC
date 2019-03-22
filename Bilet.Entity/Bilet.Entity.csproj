@@ -79,10 +79,11 @@
     <Compile Include="Entity\BiletSatisDetay.cs" />
     <Compile Include="Entity\Destinasyon.cs" />
     <Compile Include="Entity\EntityBase.cs" />
+    <Compile Include="Entity\Guzergah.cs" />
     <Compile Include="Entity\KalkisYeri.cs" />
     <Compile Include="Entity\Otobus.cs" />
     <Compile Include="Entity\Sefer.cs" />
-    <Compile Include="Entity\SeferProgram.cs" />
+    <Compile Include="Entity\SeferSaat.cs" />
     <Compile Include="Identity\ApplicationRole.cs" />
     <Compile Include="Identity\ApplicationUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

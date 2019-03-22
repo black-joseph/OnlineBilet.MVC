@@ -1,4 +1,4 @@
-﻿@model Bilet.Entity.Entity.Sefer
+﻿@model Bilet.Entity.Entity.Guzergah
 
 @{
     ViewBag.Title = "Index";
@@ -124,7 +124,7 @@
                         //var destinasyonlar = JSON.parse(result);
                         var s = '<option value="-1">Kalkış Tarihi Seçiniz.</option>';
                         for (var i = 0; i < result.length; i++) {
-                            s += '<option value="' + result[i].SeferProgramId + '">' + result[i].KalkisTarihi + '</option>'
+                            s += '<option value="' + result[i].SeferId + '">' + result[i].KalkisTarihi + '</option>'
                         }
                         $('#cbKalkisTarihleri').html(s);
                     }

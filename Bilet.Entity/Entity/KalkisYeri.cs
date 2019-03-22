@@ -14,7 +14,7 @@ namespace Bilet.Entity.Entity
         [Required]
         public string KalkisYer { get; set; }
         //Relations
-        public virtual List<Sefer> Seferler { get; set; }
+        public virtual List<Guzergah> Guzergahlar { get; set; }
 
     }
 }

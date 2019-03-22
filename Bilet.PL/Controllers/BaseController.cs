@@ -15,8 +15,8 @@ namespace Bilet.PL.Controllers
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            Repository<Sefer> repoS = new Repository<Sefer>(ent);
-            ViewBag.Seferler = repoS.GetAll();
+            Repository<Guzergah> repoG = new Repository<Guzergah>(ent);
+            ViewBag.Guzergahlar = repoG.GetAll();
             Repository<KalkisYeri> repoK = new Repository<KalkisYeri>(ent);
             ViewBag.KalkisYerler = repoK.GetAll();
             Repository<Destinasyon> repoD = new Repository<Destinasyon>(ent);

@@ -13,9 +13,9 @@ namespace Bilet.Entity.Entity
     {
         [StringLength(7)]
         public string Plaka { get; set; }
-        public int SeferProgramId { get; set; }
+        public int SeferSaatId { get; set; }
         //relations
-        [ForeignKey("SeferProgramId")]
-        public virtual SeferProgram SeferProgram { get; set; }
+        [ForeignKey("SeferSaatId")]
+        public virtual SeferSaat SeferSaat{ get; set; }
     }
 }

@@ -21,7 +21,7 @@ namespace Bilet.PL.Controllers
         [HttpGet]
         public JsonResult DestinasyonGetir(int KalkisYerId)
         {
-            return Json(ent.Seferler.Where(s => s.KalkisYeriId == KalkisYerId).Select(s => new
+            return Json(ent.Guzergahlar.Where(s => s.KalkisYeriId == KalkisYerId).Select(s => new
             {
                 Id = s.DestinasyonId,
                 Destinasyon = s.Destinasyon.DestinasyonYer
@@ -30,9 +30,9 @@ namespace Bilet.PL.Controllers
         [HttpGet]
         public JsonResult TarihGetir(int KalkisYerId , int DestinasyonId)
         {
-            return Json(ent.SeferProgramlar.Where(t => t.Sefer.KalkisYeriId == KalkisYerId && t.Sefer.DestinasyonId==DestinasyonId).Select(t => new
+            return Json(ent.Seferler.Where(t => t.Guzergah.KalkisYeriId == KalkisYerId && t.Guzergah.DestinasyonId==DestinasyonId).Select(t => new
             {
-                SeferProgramId = t.Id,
+                SeferId = t.Id,
                 KalkisTarihi = t.KalkisTarihi
             }).ToList(), JsonRequestBehavior.AllowGet);
         }

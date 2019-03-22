@@ -18,7 +18,7 @@ namespace Bilet.Entity.Entity
         [ForeignKey("UserId")]
         public virtual ApplicationUser User { get; set; }
         public virtual List<BiletSatisDetay> BiletSatisDetaylar { get; set; }
-        public virtual List<SeferProgram> SeferProgramlar { get; set; }
+        public virtual List<SeferSaat> SeferSaatler { get; set; }
 
     }
 }
