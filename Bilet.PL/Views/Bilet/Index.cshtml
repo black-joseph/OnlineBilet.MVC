@@ -39,7 +39,7 @@
                     <div class="tab-1 resp-tab-content oneway">
                         <form action="#" method="post">
                             <div class="from">
-                                <h3>Nereden</h3>
+                                <h3>Nereden?</h3>
 
                                 <select id="cbKalkisYerleri">
                                     <option value="-1">Kalkış yeri Seçiniz.</option>
@@ -50,7 +50,7 @@
                                 </select>
                             </div>
                             <div class="to">
-                                <h3>Nereye</h3>
+                                <h3>Nereye?</h3>
                                 <select id="cbDestinasyonlar"></select>
 
                             </div>
@@ -73,7 +73,9 @@
                                 <select id="cbKalkisSaatleri"></select>
                             </div>
                             <div class="clear"></div>
-                            @Html.ActionLink("Koltuk Seç", "KoltukSec", "Bilet")
+                            <ul class="menu ml-auto mt-1">
+                                <li class="booking">@Html.ActionLink("Koltuk Seç", "KoltukSec", "Bilet")</li>
+                            </ul>
                         </form>
 
                     </div>
