@@ -76,7 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entity\BiletSatis.cs" />
-    <Compile Include="Entity\BiletSatisDetay.cs" />
+    <Compile Include="Entity\Koltuk.cs" />
     <Compile Include="Entity\Destinasyon.cs" />
     <Compile Include="Entity\EntityBase.cs" />
     <Compile Include="Entity\Guzergah.cs" />

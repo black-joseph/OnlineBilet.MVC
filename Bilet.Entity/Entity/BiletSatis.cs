@@ -13,12 +13,10 @@ namespace Bilet.Entity.Entity
     {
         public DateTime IslemTarihi { get; set; }
         public string UserId { get; set; }
-   
         //relations
         [ForeignKey("UserId")]
         public virtual ApplicationUser User { get; set; }
-        public virtual List<BiletSatisDetay> BiletSatisDetaylar { get; set; }
-        public virtual List<SeferSaat> SeferSaatler { get; set; }
+        public virtual List<Koltuk> Koltuklar { get; set; }
 
     }
 }

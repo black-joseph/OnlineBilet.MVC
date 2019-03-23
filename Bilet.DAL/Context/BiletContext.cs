@@ -18,12 +18,13 @@ namespace Bilet.DAL.Context
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<BiletContext, Configuration>("BiletContext"));
         }
         public virtual DbSet<BiletSatis> BiletSatislar { get; set; }
-        public virtual DbSet<BiletSatisDetay> BiletSatisDetaylar { get; set; }
+        public virtual DbSet<Koltuk> Koltuklar { get; set; }
         public virtual DbSet<Otobus> Otobusler { get; set; }
         public virtual DbSet<Guzergah> Guzergahlar { get; set; }
-        public virtual DbSet<Sefer> Seferler { get; set; }   
+        public virtual DbSet<Sefer> Seferler { get; set; }
+        public virtual DbSet<SeferSaat> SeferSaatler { get; set; }
         public virtual DbSet<KalkisYeri> KalkisYerleri { get; set; }
         public virtual DbSet<Destinasyon> Destinasyonlar { get; set; }
-        public virtual DbSet<SeferSaat> SeferSaatler { get; set; }
+        
     }
 }
