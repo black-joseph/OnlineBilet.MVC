@@ -76,11 +76,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\BiletContext.cs" />
-    <Compile Include="Migrations\201903071731555_InitialCreate.cs" />
-    <Compile Include="Migrations\201903071731555_InitialCreate.Designer.cs">
-      <DependentUpon>201903071731555_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -92,11 +87,6 @@
       <Project>{5c25026c-30ad-4e03-8f8d-d2a3cc08d6ff}</Project>
       <Name>Bilet.Entity</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903071731555_InitialCreate.resx">
-      <DependentUpon>201903071731555_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

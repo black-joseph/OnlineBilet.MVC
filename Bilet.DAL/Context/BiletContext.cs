@@ -1,5 +1,4 @@
-﻿using Bilet.DAL.Migrations;
-using Bilet.Entity.Entity;
+﻿using Bilet.Entity.Entity;
 using Bilet.Entity.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
@@ -15,7 +14,7 @@ namespace Bilet.DAL.Context
     {
         public BiletContext() : base("BiletContext")
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<BiletContext, Configuration>("BiletContext"));
+            
         }
         public virtual DbSet<BiletSatis> BiletSatislar { get; set; }
         public virtual DbSet<Koltuk> Koltuklar { get; set; }
