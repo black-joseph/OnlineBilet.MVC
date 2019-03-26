@@ -32,7 +32,7 @@ namespace Bilet.PL.Controllers
         {
             return Json(ent.Seferler.Where(t => t.Guzergah.KalkisYeriId == KalkisYerId && t.Guzergah.DestinasyonId==DestinasyonId).Select(t => new
             {
-                SeferId = t.Id,
+                Id = t.Id,
                 KalkisTarihi = t.KalkisTarihi
             }).ToList(), JsonRequestBehavior.AllowGet);
         }
@@ -41,10 +41,22 @@ namespace Bilet.PL.Controllers
         {
             return Json(ent.SeferSaatler.Where(s => s.Sefer.Guzergah.KalkisYeriId == KalkisYerId && s.Sefer.Guzergah.DestinasyonId == DestinasyonId && s.SeferId==SeferId).Select(s => new
             {
-                SeferSaatId = s.Id,
+                Id = s.Id,
                 KalkisSaati = s.KalkisSaati
             }).ToList(), JsonRequestBehavior.AllowGet);
         }
+        [HttpGet]
+        public JsonResult OtobusGetir(int KalkisYerId, int DestinasyonId, int SeferId, int SeferSaatId)
+        {
+            return Json(ent.Otobusler.Where(s => s.SeferSaat.Sefer.Guzergah.KalkisYeriId == KalkisYerId && s.SeferSaat.Sefer.Guzergah.DestinasyonId == DestinasyonId && s.SeferSaat.SeferId == SeferId && s.SeferSaatId==SeferSaatId).Select(s => new
+            {
+                Id = s.Id,                
+                Sofor=s.Sofor
+            }).ToList(), JsonRequestBehavior.AllowGet);
+        }
+
+
+
         public ActionResult KoltukSec()
         {
 

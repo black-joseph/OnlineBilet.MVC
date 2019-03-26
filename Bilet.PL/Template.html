@@ -32,7 +32,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </div>
                 <div class="booking-details">
                     <div id="legend"></div>
-                    <h3> Selected Seats (<span id="counter">0</span>):</h3>
+                    <h3> Seçili Koltuklar (<span id="counter">0</span>):</h3>
                     <ul id="selected-seats" class="scrollbar scrollbar1"></ul>
 
                     Total: <b>$<span id="total">0</span></b>
@@ -64,12 +64,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							f: {
 								price   : 100,
 								classes : 'first-class', //your custom CSS class
-								category: 'First Class'
+                                category: 'Birinci Sınıf'
 							},
 							e: {
 								price   : 40,
 								classes : 'economy-class', //your custom CSS class
-								category: 'Economy Class'
+                                category: 'Ekonomik Sınıf'
 							}
 
 						},
@@ -82,8 +82,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						legend : {
 							node : $('#legend'),
 							items : [
-								[ 'f', 'available',   'First Class' ],
-								[ 'e', 'available',   'Economy Class'],
+								[ 'f', 'available',   'Birinci Sınıf' ],
+								[ 'e', 'available',   'Ekonomik Sınıf'],
 								[ 'f', 'unavailable', 'Already Booked']
 							]
 						},

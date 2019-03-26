@@ -13,6 +13,8 @@ namespace Bilet.Entity.Entity
     {
         [StringLength(7)]
         public string Plaka { get; set; }
+        public string Marka { get; set; }
+        public string Sofor { get; set; }
         public int SeferSaatId { get; set; }
         //relations
         [ForeignKey("SeferSaatId")]

@@ -11,9 +11,9 @@ namespace Bilet.Entity.Entity
     [Table("Koltuklar")]
     public class Koltuk : EntityBase
     {
-        [Range(1, 50, ErrorMessage = "Koltuk no 1-50 arası olmalıdır!")]
         public int KoltukNo { get; set; }
-        public string KoltukTürü { get; set; }
+        public string KoltukDurumu { get; set; }
+        public decimal Fiyat { get; set; }
         public string Cinsiyet { get; set; }
         public int? BiletSatisId { get; set; }
         public int? OtobusId { get; set; }
