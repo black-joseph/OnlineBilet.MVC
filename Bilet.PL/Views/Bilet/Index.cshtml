@@ -72,7 +72,7 @@
                             </div>
                             <div class="clear"></div>
                             <ul class="menu ml-auto mt-1">
-                                <li class="booking">@Html.ActionLink("Koltuk Seç", "KoltukSec", "Bilet")</li>
+                                <li class="booking"></li>
                             </ul>
                         </form>
                     </div>
@@ -182,7 +182,7 @@
                         for (var i = 0; i < result.length; i++) {
                             s += '<option value="' + result[i].Id + '">' + result[i].Sofor + '</option>'
                         }
-                        $('#cbOtobusler').html(s);             
+                        $('#cbOtobusler').html(s);
                     }
 
                 });
@@ -190,7 +190,24 @@
         });
     </script>
     <!--saate göre otobüs seçimi-->
-    
+    <!--otobüse göre button enable etme-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#cbOtobusler").on('change', function () {
+                $('@Html.ActionLink("Koltuk Seç", "KoltukSec")').prop('disabled', this.value === 'EnabledOptionValue' ? false : true);             
+                var OtobusId = $('#cbOtobusler option:selected').val();
+                $.ajax({
+                    type: 'GET',
+                    data: { OtobusId: OtobusId },
+                    url: "/Bilet/KoltukSec"
+                    
+
+                });
+            });
+        });
+    </script>
+    <!--otobüse göre button enable etme-->
+
     <script src="js/jquery.min.js"></script>
     <script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
     <script type="text/javascript">

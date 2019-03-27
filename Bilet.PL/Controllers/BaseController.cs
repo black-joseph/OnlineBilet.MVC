@@ -17,10 +17,12 @@ namespace Bilet.PL.Controllers
         {
             Repository<Guzergah> repoG = new Repository<Guzergah>(ent);
             ViewBag.Guzergahlar = repoG.GetAll();
-            Repository<KalkisYeri> repoK = new Repository<KalkisYeri>(ent);
-            ViewBag.KalkisYerler = repoK.GetAll();
+            Repository<KalkisYeri> repoY = new Repository<KalkisYeri>(ent);
+            ViewBag.KalkisYerler = repoY.GetAll();
             Repository<Destinasyon> repoD = new Repository<Destinasyon>(ent);
             ViewBag.Destinasyonlar = repoD.GetAll();
+            Repository<Koltuk> repoK = new Repository<Koltuk>(ent);
+            ViewBag.Destinasyonlar = repoK.GetAll();
 
             //Repository<Tag> repoT = new Repository<Tag>(ent);
             //ViewBag.Etiketler = repoT.GetAll(null, t => t.OrderByDescending(x => x.Articles.Count)).Take(5);

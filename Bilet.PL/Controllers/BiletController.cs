@@ -57,10 +57,27 @@ namespace Bilet.PL.Controllers
 
 
 
-        public ActionResult KoltukSec()
+        public ActionResult KoltukSec(int OtobusId)
         {
+            Otobus secilen = (from c in ent.Otobusler
+                               where c.Id == OtobusId
+                               select c).FirstOrDefault();
 
-            return View();
+            return View(secilen);
         }
+        //[HttpPost]
+        //public ActionResult KoltukSec(List<int> KoltukNumaralar)
+        //{
+        //    Product degisen = (from c in ent.Products
+        //                       where c.Id == Degismis.Id
+        //                       select c).FirstOrDefault();
+        //    degisen.ProductName = Degismis.ProductName;
+        //    degisen.Price = Degismis.Price;
+        //    degisen.UnitsInStock = Degismis.UnitsInStock;
+        //    degisen.CategoryId = Degismis.CategoryId;
+
+        //    ent.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
     }
 }
