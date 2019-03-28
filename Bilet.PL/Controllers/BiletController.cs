@@ -57,13 +57,13 @@ namespace Bilet.PL.Controllers
 
 
 
-        public ActionResult KoltukSec(/*int OtobusId*/)
+        public ActionResult KoltukSec(int OtobusId)
         {
-            //Otobus secilen = (from c in ent.Otobusler
-            //                   where c.Id == OtobusId
-            //                   select c).FirstOrDefault();
+            Otobus secilen = (from c in ent.Otobusler
+                              where c.Id == OtobusId
+                              select c).FirstOrDefault();
 
-            return View(/*secilen*/);
+            return View(secilen);
         }
         //[HttpPost]
         //public ActionResult KoltukSec(List<int> KoltukNumaralar)

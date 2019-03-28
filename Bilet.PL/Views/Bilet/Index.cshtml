@@ -71,9 +71,10 @@
                                 <select id="cbOtobusler"></select>
                             </div>
                             <div class="clear"></div>
-                            <div id="KoltukSec">
-                                <button disabled>Koltuk Seç</button>
-                            </div>                           
+                            @using (Html.BeginForm("KoltukSec", "Bilet"))
+                            {
+                                <button type="submit" id="ks" disabled>Koltuk Seç</button>
+                            }
                         </form>
                     </div>
                 </div>
@@ -191,17 +192,25 @@
     </script>
     <!--saate göre otobüs seçimi-->
     <!--otobüse göre button enable etme-->
-    <script>
+    <script type="text/javascript">
         var degisecek = document.querySelector("#cbOtobusler");
-        var aktiflik = document.querySelector("button");
+        var aktiflik = document.querySelector('#ks');
         degisecek.onchange = function () {
             aktiflik.removeAttribute('disabled');
         };
-        $("#KoltukSec").click(function () {
+        var OtobusId;
+        $("#cbOtobusler").on('change', function () {
+            console.log("change");
+            OtobusId = $('#cbOtobusler option:selected').val();
+            console.log(OtobusId);
+        });
+        console.log(OtobusId);
+        $('#ks').click(function () {
             $.ajax({
                 type: 'GET',
-                data: { KalkisYerId: KalkisYeriId, DestinasyonId: DestinasyonId, SeferId: SeferId, SeferSaatId: SeferSaatId },
-                url: "/Bilet/OtobusGetir"
+                data: { OtobusId: OtobusId },
+                url: "/Bilet/KoltukSec"
+            });
         });
     </script>
     <!--otobüse göre button enable etme-->
