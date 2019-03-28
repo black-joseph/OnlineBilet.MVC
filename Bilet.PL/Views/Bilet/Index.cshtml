@@ -71,9 +71,9 @@
                                 <select id="cbOtobusler"></select>
                             </div>
                             <div class="clear"></div>
-                            <ul class="menu ml-auto mt-1">
-                                <li class="booking"></li>
-                            </ul>
+                            <div id="KoltukSec">
+                                <button disabled>Koltuk Seç</button>
+                            </div>                           
                         </form>
                     </div>
                 </div>
@@ -191,19 +191,17 @@
     </script>
     <!--saate göre otobüs seçimi-->
     <!--otobüse göre button enable etme-->
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#cbOtobusler").on('change', function () {
-                $('@Html.ActionLink("Koltuk Seç", "KoltukSec")').prop('disabled', this.value === 'EnabledOptionValue' ? false : true);             
-                var OtobusId = $('#cbOtobusler option:selected').val();
-                $.ajax({
-                    type: 'GET',
-                    data: { OtobusId: OtobusId },
-                    url: "/Bilet/KoltukSec"
-                    
-
-                });
-            });
+    <script>
+        var degisecek = document.querySelector("#cbOtobusler");
+        var aktiflik = document.querySelector("button");
+        degisecek.onchange = function () {
+            aktiflik.removeAttribute('disabled');
+        };
+        $("#KoltukSec").click(function () {
+            $.ajax({
+                type: 'GET',
+                data: { KalkisYerId: KalkisYeriId, DestinasyonId: DestinasyonId, SeferId: SeferId, SeferSaatId: SeferSaatId },
+                url: "/Bilet/OtobusGetir"
         });
     </script>
     <!--otobüse göre button enable etme-->
