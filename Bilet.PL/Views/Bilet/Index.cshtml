@@ -73,7 +73,7 @@
                             <div class="clear"></div>
                             @using (Html.BeginForm("KoltukSec", "Bilet"))
                             {
-                                <button type="submit" id="ks" disabled>Koltuk Seç</button>
+                                <a id="ks" >Koltuk Seç</a>
                             }
                         </form>
                     </div>
@@ -198,20 +198,19 @@
         degisecek.onchange = function () {
             aktiflik.removeAttribute('disabled');
         };
-        var OtobusId;
+        var OId;
         $("#cbOtobusler").on('change', function () {
             console.log("change");
-            OtobusId = $('#cbOtobusler option:selected').val();
-            console.log(OtobusId);
+            OId = $('#cbOtobusler option:selected').val();
+            console.log(OId);
+            var ksstring = "/Bilet/KoltukSec/?OtobusId=" + OId;
+            console.log(ksstring);
+            $("#ks").attr("href", ksstring);
+            $("#ks").attr("class", "btn btn-primary");
+
         });
-        console.log(OtobusId);
-        $('#ks').click(function () {
-            $.ajax({
-                type: 'GET',
-                data: { OtobusId: OtobusId },
-                url: "/Bilet/KoltukSec"
-            });
-        });
+        console.log(OId);
+
     </script>
     <!--otobüse göre button enable etme-->
 

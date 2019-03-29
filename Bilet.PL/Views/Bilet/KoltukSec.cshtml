@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Bilet.Entity.Entity.Otobus>
+﻿@model Bilet.Entity.Entity.Otobus
 
 @{
     ViewBag.Title = "KoltukSec";
@@ -91,7 +91,7 @@
                                         .attr('id', 'cart-item-' + this.settings.id)
                                         .data('seatId', this.settings.id)
                                         .appendTo($cart);
-                                    
+
                                     /*
                                      * Lets update the counter and total
                                      *
