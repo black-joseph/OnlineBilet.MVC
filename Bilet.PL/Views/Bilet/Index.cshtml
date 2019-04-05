@@ -70,11 +70,8 @@
                                 <h3>Hangi Şoför?</h3>
                                 <select id="cbOtobusler"></select>
                             </div>
-                            <div class="clear"></div>
-                            @using (Html.BeginForm("KoltukSec", "Bilet"))
-                            {
-                                <a id="ks" >Koltuk Seç</a>
-                            }
+                            <div class="clear"></div>                           
+                            <a id="ks" >Koltuk Seç</a>                           
                         </form>
                     </div>
                 </div>
@@ -193,11 +190,11 @@
     <!--saate göre otobüs seçimi-->
     <!--otobüse göre button enable etme-->
     <script type="text/javascript">
-        var degisecek = document.querySelector("#cbOtobusler");
-        var aktiflik = document.querySelector('#ks');
-        degisecek.onchange = function () {
-            aktiflik.removeAttribute('disabled');
-        };
+        //var degisecek = document.querySelector("#cbOtobusler");
+        //var aktiflik = document.querySelector('#ks');
+        //degisecek.onchange = function () {
+        //    aktiflik.removeAttribute('disabled');
+        //};
         var OId;
         $("#cbOtobusler").on('change', function () {
             console.log("change");
