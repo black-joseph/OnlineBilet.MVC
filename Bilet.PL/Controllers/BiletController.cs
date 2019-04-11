@@ -1,6 +1,7 @@
 ﻿using Bilet.BLL.Repository;
 using Bilet.DAL.Context;
 using Bilet.Entity.Entity;
+using Bilet.PL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,6 +56,18 @@ namespace Bilet.PL.Controllers
                               select c).FirstOrDefault();
 
             return View(secilen);
+        }
+
+        public JsonResult SecilenKoltuk(int KoltukNo)
+        {   
+            BiletSatisDetay bd = ent.BiletSatisDetaylar.Where(b => b.KoltukNo == KoltukNo).FirstOrDefault();
+            cSepet secilen = new cSepet();
+            secilen.KoltukNo = bd.KoltukNo;
+            secilen.fiyat = bd.Fiyat;
+            secilen.KoltukTuru = bd.KoltukTuru;
+            List<cSepet> sepet = cSepet.SepetAl();
+            secilen.SepeteEkle(sepet, secilen);
+            return Json(JsonRequestBehavior.AllowGet);
         }
         //[HttpPost]
         //public ActionResult KoltukSec(List<int> KoltukNumaralar)

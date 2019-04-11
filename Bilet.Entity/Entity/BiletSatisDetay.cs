@@ -12,6 +12,7 @@ namespace Bilet.Entity.Entity
     public class BiletSatisDetay : EntityBase
     {
         public int KoltukNo { get; set; }
+        public string KoltukTuru { get; set; }
         public decimal Fiyat { get; set; }
         public string Cinsiyet { get; set; }
         public int? BiletSatisId { get; set; }
