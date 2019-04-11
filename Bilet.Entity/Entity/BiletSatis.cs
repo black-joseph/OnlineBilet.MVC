@@ -16,6 +16,6 @@ namespace Bilet.Entity.Entity
         //relations
         [ForeignKey("UserId")]
         public virtual ApplicationUser User { get; set; }
-        public virtual List<Koltuk> Koltuklar { get; set; }
+        public virtual List<BiletSatisDetay> BiletSatisDetaylar { get; set; }
     }
 }

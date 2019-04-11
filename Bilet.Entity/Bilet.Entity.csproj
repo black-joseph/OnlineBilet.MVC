@@ -80,7 +80,7 @@
     <Compile Include="Entity\EntityBase.cs" />
     <Compile Include="Entity\Guzergah.cs" />
     <Compile Include="Entity\KalkisYeri.cs" />
-    <Compile Include="Entity\Koltuk.cs" />
+    <Compile Include="Entity\BiletSatisDetay.cs" />
     <Compile Include="Entity\Otobus.cs" />
     <Compile Include="Entity\Sefer.cs" />
     <Compile Include="Entity\SeferSaat.cs" />

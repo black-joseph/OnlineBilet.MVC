@@ -19,6 +19,5 @@ namespace Bilet.Entity.Entity
         //relations
         [ForeignKey("SeferSaatId")]
         public virtual SeferSaat SeferSaat { get; set; }
-        public virtual List<Koltuk> Koltuklar { get; set; }
     }
 }

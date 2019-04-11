@@ -8,19 +8,18 @@ using System.Threading.Tasks;
 
 namespace Bilet.Entity.Entity
 {
-    [Table("Koltuklar")]
-    public class Koltuk : EntityBase
+    [Table("BiletSatisDetaylar")]
+    public class BiletSatisDetay : EntityBase
     {
         public int KoltukNo { get; set; }
-        public string KoltukDurumu { get; set; }
         public decimal Fiyat { get; set; }
         public string Cinsiyet { get; set; }
         public int? BiletSatisId { get; set; }
-        public int? OtobusId { get; set; }
+        public int? SeferSaatId { get; set; }
         //relations
         [ForeignKey("BiletSatisId")]
         public virtual BiletSatis BiletSatis { get; set; }
-        [ForeignKey("OtobusId")]
-        public virtual Otobus Otobus { get; set; }
+        [ForeignKey("SeferSaatId")]
+        public virtual SeferSaat SeferSaat { get; set; }
     }
 }

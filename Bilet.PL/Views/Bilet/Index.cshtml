@@ -65,11 +65,7 @@
                             <div class="class">
                                 <h3>Saat Kaçta?</h3>
                                 <select id="cbKalkisSaatleri"></select>
-                            </div>
-                            <div class="class">
-                                <h3>Hangi Şoför?</h3>
-                                <select id="cbOtobusler"></select>
-                            </div>
+                            </div>                          
                             <div class="clear"></div>                           
                             <a id="ks" >Koltuk Seç</a>                           
                         </form>
@@ -160,35 +156,7 @@
         });
     </script>
     <!--tarihe göre saat seçimi-->
-    <!--saate göre otobüs seçimi-->
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#cbKalkisSaatleri").on('change', function () {
-                console.log("change");
-                var KalkisYeriId = $('#cbKalkisYerleri option:selected').val();
-                var DestinasyonId = $('#cbDestinasyonlar option:selected').val();
-                var SeferId = $('#cbKalkisTarihleri option:selected').val();
-                var SeferSaatId = $('#cbKalkisSaatleri option:selected').val();
-                console.log(KalkisYeriId);
-                $.ajax({
-                    type: 'GET',
-                    data: { KalkisYerId: KalkisYeriId, DestinasyonId: DestinasyonId, SeferId: SeferId, SeferSaatId: SeferSaatId },
-                    url: "/Bilet/OtobusGetir",
-                    success: function (result) {
-                        //var destinasyonlar = JSON.parse(result);
-                        var s = '<option value="-1">Şoför Seçiniz.</option>';
-                        for (var i = 0; i < result.length; i++) {
-                            s += '<option value="' + result[i].Id + '">' + result[i].Sofor + '</option>'
-                        }
-                        $('#cbOtobusler').html(s);
-                    }
-
-                });
-            });
-        });
-    </script>
-    <!--saate göre otobüs seçimi-->
-    <!--otobüse göre button enable etme-->
+    <!--Kalkis Saate göre button enable etme-->
     <script type="text/javascript">
         //var degisecek = document.querySelector("#cbOtobusler");
         //var aktiflik = document.querySelector('#ks');
@@ -196,17 +164,17 @@
         //    aktiflik.removeAttribute('disabled');
         //};
         var OId;
-        $("#cbOtobusler").on('change', function () {
+        $("#cbKalkisSaatleri").on('change', function () {
             console.log("change");
-            OId = $('#cbOtobusler option:selected').val();
+            SId = $('#cbKalkisSaatleri option:selected').val();
             console.log(OId);
-            var ksstring = "/Bilet/KoltukSec/?OtobusId=" + OId;
+            var ksstring = "/Bilet/KoltukSec/?SeferSaatId=" + SId;
             console.log(ksstring);
             $("#ks").attr("href", ksstring);
             $("#ks").attr("class", "btn btn-primary");
 
         });
-        console.log(OId);
+        console.log(SId);
 
     </script>
     <!--otobüse göre button enable etme-->

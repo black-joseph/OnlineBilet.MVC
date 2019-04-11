@@ -45,22 +45,13 @@ namespace Bilet.PL.Controllers
                 KalkisSaati = s.KalkisSaati
             }).ToList(), JsonRequestBehavior.AllowGet);
         }
-        [HttpGet]
-        public JsonResult OtobusGetir(int KalkisYerId, int DestinasyonId, int SeferId, int SeferSaatId)
+
+
+
+        public ActionResult KoltukSec(int SeferSaatId)
         {
-            return Json(ent.Otobusler.Where(s => s.SeferSaat.Sefer.Guzergah.KalkisYeriId == KalkisYerId && s.SeferSaat.Sefer.Guzergah.DestinasyonId == DestinasyonId && s.SeferSaat.SeferId == SeferId && s.SeferSaatId==SeferSaatId).Select(s => new
-            {
-                Id = s.Id,                
-                Sofor=s.Sofor
-            }).ToList(), JsonRequestBehavior.AllowGet);
-        }
-
-
-
-        public ActionResult KoltukSec(int OtobusId)
-        {
-            Otobus secilen = (from c in ent.Otobusler
-                              where c.Id == OtobusId
+            SeferSaat secilen = (from c in ent.SeferSaatler
+                              where c.Id == SeferSaatId
                               select c).FirstOrDefault();
 
             return View(secilen);
