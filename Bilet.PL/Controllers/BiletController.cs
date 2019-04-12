@@ -57,18 +57,23 @@ namespace Bilet.PL.Controllers
 
             return View(secilen);
         }
+        [HttpGet]
+        public ActionResult SecilenKoltuk(List<int> KoltukNolar)
+        {
+            //BiletSatisDetay bd = ent.BiletSatisDetaylar.Where(b => b.KoltukNo == KoltukNo).FirstOrDefault();
+            foreach (var KoltukNo in KoltukNolar)
+            {
+                cSepet secilen = new cSepet();
+                secilen.KoltukNo = KoltukNo;
 
-        public JsonResult SecilenKoltuk(int KoltukNo)
-        {   
-            BiletSatisDetay bd = ent.BiletSatisDetaylar.Where(b => b.KoltukNo == KoltukNo).FirstOrDefault();
-            cSepet secilen = new cSepet();
-            secilen.KoltukNo = bd.KoltukNo;
-            secilen.fiyat = bd.Fiyat;
-            secilen.KoltukTuru = bd.KoltukTuru;
-            List<cSepet> sepet = cSepet.SepetAl();
-            secilen.SepeteEkle(sepet, secilen);
-            return Json(JsonRequestBehavior.AllowGet);
+                List<cSepet> sepet = cSepet.SepetAl();
+                secilen.SepeteEkle(sepet, secilen);
+            }
+           
+            return RedirectToAction("Odemeler");
+            
         }
+        public ActionResult Odemeler
         //[HttpPost]
         //public ActionResult KoltukSec(List<int> KoltukNumaralar)
         //{

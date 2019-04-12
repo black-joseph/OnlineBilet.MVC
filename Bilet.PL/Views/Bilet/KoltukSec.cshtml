@@ -34,7 +34,8 @@
                     
                     Toplam: <b>$<span id="total">0</span></b>
 
-                    <button class="checkout-button">Şimdi Öde</button>
+                    @*<button class="checkout-button">Şimdi Öde</button>*@
+                    <a href="" id="so">Şimdi Öde</a>
                 </div>
                 <div class="clear"></div>
             </div>
@@ -42,6 +43,7 @@
                 var firstSeatLabel = 1;
 
                 $(document).ready(function () {
+                    var koltukNolar = [];
                     var $cart = $('#selected-seats'),
                         $counter = $('#counter'),
                         $total = $('#total'),
@@ -87,29 +89,32 @@
                             click: function () {
                                 if (this.status() == 'available') {
                                     //let's create a new <li> which we'll add to the cart items                                    
-                                    var kNo = parseInt( this.settings.label);                             console.log(this.settings.label); 
-                                    $.ajax({
-                                        type: 'GET',
-                                        data: { KoltukNo: kNo },
-                                        url: "/Bilet/SecilenKoltuk",
-                                        success: function (result) {
-                                            $('<li>' + this.data().category + ' : Koltuk no ' + this.settings.label + ': <b>$' + this.data().price + '</b> <a href="#" class="cancel-cart-item">[cancel]</a></li>')
-                                                .attr('id', 'cart-item-' + this.settings.id)
-                                                .data('seatId', this.settings.id)
-                                                .appendTo($cart);
-
-                                            /*
-                                             * Lets update the counter and total
-                                             *
-                                             * .find function will not find the current seat, because it will change its status only after return
-                                             * 'selected'. This is why we have to add 1 to the length and the current seat price to the total.
-                                             */
-                                            $counter.text(sc.find('selected').length + 1);
-                                            $total.text(recalculateTotal(sc) + this.data().price);
-                                        }  
-                                        
+                                    
+                                    var kNo = parseInt(this.settings.label); console.log(this.settings.label);
+                                    var KoltukDurumu = false;
+                                    $.each(koltukNolar, function (index, value) {
+                                        if (value === kNo) {
+                                            KoltukDurumu = true;
+                                        }
                                     });
+                                    if (!KoltukDurumu) {
+                                        koltukNolar.push(kNo);
+                                    }
+                                    
+                                    
+                                    $('<li>' + this.data().category + ' : Koltuk no ' + this.settings.label + ': <b>$' + this.data().price + '</b> <a href="#" class="cancel-cart-item">[cancel]</a></li>')
+                                        .attr('id', 'cart-item-' + this.settings.id)
+                                        .data('seatId', this.settings.id)
+                                        .appendTo($cart);
 
+                                    /*
+                                     * Lets update the counter and total
+                                     *
+                                     * .find function will not find the current seat, because it will change its status only after return
+                                     * 'selected'. This is why we have to add 1 to the length and the current seat price to the total.
+                                     */
+                                    $counter.text(sc.find('selected').length + 1);
+                                    $total.text(recalculateTotal(sc) + this.data().price);
                                     return 'selected';
                                 } else if (this.status() == 'selected') {
                                     //update the counter
@@ -130,7 +135,17 @@
                                 }
                             }
                         });
+                    $("#so").click(function () {
+                        $.ajax({
+                            type: 'GET',
+                            data: { KoltukNolar: koltukNolar },
+                            url: "/Bilet/SecilenKoltuk",
+                            success: function (result) {
 
+                            }
+
+                        });
+                    });
                     //this will handle "[cancel]" link clicks
                     $('#selected-seats').on('click', '.cancel-cart-item', function () {
                         //let's just trigger Click event on the appropriate seat, so we don't have to repeat the logic here
