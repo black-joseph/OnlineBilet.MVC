@@ -46,9 +46,6 @@ namespace Bilet.PL.Controllers
                 KalkisSaati = s.KalkisSaati
             }).ToList(), JsonRequestBehavior.AllowGet);
         }
-
-
-
         public ActionResult KoltukSec(int SeferSaatId)
         {
             SeferSaat secilen = (from c in ent.SeferSaatler
@@ -73,7 +70,10 @@ namespace Bilet.PL.Controllers
             return RedirectToAction("Odemeler");
             
         }
-        public ActionResult Odemeler
+        public ActionResult Odemeler()
+        {
+            return View();
+        }
         //[HttpPost]
         //public ActionResult KoltukSec(List<int> KoltukNumaralar)
         //{
